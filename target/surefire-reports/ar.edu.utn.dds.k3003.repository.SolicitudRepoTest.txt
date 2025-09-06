@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: ar.edu.utn.dds.k3003.repository.SolicitudRepoTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 13.89 s -- in ar.edu.utn.dds.k3003.repository.SolicitudRepoTest
