@@ -51,6 +51,13 @@
       <optional>true</optional>
     </dependency>
 
+    <!-- Driver de PostgreSQL -->
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+           
     <!-- Database -->
     <dependency>
       <groupId>com.h2database</groupId>
