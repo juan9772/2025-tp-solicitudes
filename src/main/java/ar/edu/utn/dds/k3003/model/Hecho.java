@@ -24,7 +24,6 @@ public class Hecho {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
     //aca fk
