@@ -3,7 +3,7 @@ package ar.edu.utn.dds.k3003.model;
 import ar.edu.utn.dds.k3003.facades.dtos.EstadoSolicitudBorradoEnum;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Id; // Changed this import
 
 @Data
 @Entity

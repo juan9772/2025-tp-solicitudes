@@ -1,18 +1,20 @@
-/home/julian/UTN/DDS/TPADDSI2025-Solicitudes/src/main/java/ar/edu/utn/dds/k3003/config/FachadaFuenteConfig.java
-/home/julian/UTN/DDS/TPADDSI2025-Solicitudes/src/main/java/ar/edu/utn/dds/k3003/app/Fuente.java
-/home/julian/UTN/DDS/TPADDSI2025-Solicitudes/src/main/java/ar/edu/utn/dds/k3003/repository/InMemorySolicitudRepo.java
-/home/julian/UTN/DDS/TPADDSI2025-Solicitudes/src/main/java/ar/edu/utn/dds/k3003/Application.java
-/home/julian/UTN/DDS/TPADDSI2025-Solicitudes/src/main/java/ar/edu/utn/dds/k3003/repository/InMemoryColeccionRepo.java
-/home/julian/UTN/DDS/TPADDSI2025-Solicitudes/src/main/java/ar/edu/utn/dds/k3003/model/Coleccion.java
-/home/julian/UTN/DDS/TPADDSI2025-Solicitudes/src/main/java/ar/edu/utn/dds/k3003/config/AntiSpamConfig.java
-/home/julian/UTN/DDS/TPADDSI2025-Solicitudes/src/main/java/ar/edu/utn/dds/k3003/controller/SolicitudController.java
-/home/julian/UTN/DDS/TPADDSI2025-Solicitudes/src/main/java/ar/edu/utn/dds/k3003/model/Solicitud.java
-/home/julian/UTN/DDS/TPADDSI2025-Solicitudes/src/main/java/ar/edu/utn/dds/k3003/controller/RootController.java
-/home/julian/UTN/DDS/TPADDSI2025-Solicitudes/src/main/java/ar/edu/utn/dds/k3003/config/GlobalExceptionHandler.java
-/home/julian/UTN/DDS/TPADDSI2025-Solicitudes/src/main/java/ar/edu/utn/dds/k3003/model/Hecho.java
-/home/julian/UTN/DDS/TPADDSI2025-Solicitudes/src/main/java/ar/edu/utn/dds/k3003/app/AntiSpamService.java
-/home/julian/UTN/DDS/TPADDSI2025-Solicitudes/src/main/java/ar/edu/utn/dds/k3003/repository/ColeccionRepository.java
-/home/julian/UTN/DDS/TPADDSI2025-Solicitudes/src/main/java/ar/edu/utn/dds/k3003/config/JacksonConfig.java
-/home/julian/UTN/DDS/TPADDSI2025-Solicitudes/src/main/java/ar/edu/utn/dds/k3003/app/Fachada.java
-/home/julian/UTN/DDS/TPADDSI2025-Solicitudes/src/main/java/ar/edu/utn/dds/k3003/repository/JpaSolicitudRepository.java
-/home/julian/UTN/DDS/TPADDSI2025-Solicitudes/src/main/java/ar/edu/utn/dds/k3003/repository/SolicitudRepository.java
+C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\repository\InMemorySolicitudRepo.java
+C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\app\Fuente.java
+C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\repository\InMemoryColeccionRepo.java
+C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\clients\FuenteRetrofitClient.java
+C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\model\Solicitud.java
+C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\model\Hecho.java
+C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\controller\SolicitudController.java
+C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\config\JacksonConfig.java
+C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\app\Fachada.java
+C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\repository\JpaSolicitudRepository.java
+C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\Application.java
+C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\config\GlobalExceptionHandler.java
+C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\controller\RootController.java
+C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\config\AntiSpamConfig.java
+C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\config\FachadaFuenteConfig.java
+C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\repository\ColeccionRepository.java
+C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\app\AntiSpamService.java
+C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\repository\SolicitudRepository.java
+C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\clients\FuenteProxy.java
+C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\model\Coleccion.java

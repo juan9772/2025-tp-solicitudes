@@ -6,7 +6,7 @@ import java.util.List;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Id; // Changed this import
 
 @Data
 @Entity

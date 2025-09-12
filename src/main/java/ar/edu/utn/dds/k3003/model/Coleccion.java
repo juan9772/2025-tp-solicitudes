@@ -5,20 +5,22 @@ import java.time.LocalDateTime;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id; // Changed this import
 import lombok.Data;
-import org.springframework.data.annotation.Id;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@NoArgsConstructor
 public class Coleccion {
 
     public Coleccion(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
     }
-
-    @Id
+    @Id // This annotation now comes from jakarta.persistence
     private String nombre;
+
     private String descripcion;
     private LocalDateTime fechaModificacion;
 
