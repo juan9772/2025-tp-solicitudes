@@ -1,13 +1,17 @@
 package ar.edu.utn.dds.k3003.controller;
 
+import ar.edu.utn.dds.k3003.clients.FuenteProxy;
 import ar.edu.utn.dds.k3003.facades.FachadaSolicitudes;
 import ar.edu.utn.dds.k3003.facades.dtos.EstadoSolicitudBorradoEnum;
+import ar.edu.utn.dds.k3003.facades.dtos.FuenteDTO;
 import ar.edu.utn.dds.k3003.facades.dtos.SolicitudDTO;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /*
     GET /solicitudes?hecho={hechoId}
@@ -21,10 +25,12 @@ import java.util.List;
 public class SolicitudController {
 
     private final FachadaSolicitudes fachadaSolicitudes;
+    private final ObjectMapper objectMapper;
 
     @Autowired
-    public SolicitudController(FachadaSolicitudes fachadaSolicitudes) {
+    public SolicitudController(FachadaSolicitudes fachadaSolicitudes, ObjectMapper objectMapper) {
         this.fachadaSolicitudes = fachadaSolicitudes;
+        this.objectMapper=objectMapper;
     }
 
     // GET /solicitudes?hecho={hechoId}
@@ -53,7 +59,22 @@ public class SolicitudController {
     }
     // GET /solicitudes?hecho={hechoId}
     @GetMapping("/hecho/{id}/estaActivo")
-    public ResponseEntity<Boolean> estaActivo(@RequestParam String hechoId) {
-        return ResponseEntity.ok(fachadaSolicitudes.estaActivo(hechoId));
+    public ResponseEntity<Boolean> estaActivo(@PathVariable String id) {
+        return ResponseEntity.ok(fachadaSolicitudes.estaActivo(id));
+    }
+    @PostMapping("/setFuente")
+    public ResponseEntity<String> setFuente(@RequestBody FuenteDTO fuenteDTO) {
+        try {
+            // Create a new FuenteProxy instance using the endpoint from the DTO
+            var fuenteProxy = new FuenteProxy(this.objectMapper, fuenteDTO.endpoint());
+
+            // Manually inject the proxy into the main facade
+            fachadaSolicitudes.setFachadaFuente(fuenteProxy);
+
+            return ResponseEntity.ok("Fuente configurada correctamente con el endpoint: " + fuenteDTO.endpoint());
+        } catch (Exception e) {
+            // Return a 500 Internal Server Error in case of a configuration issue
+            return ResponseEntity.status(500).body("Error al configurar la fuente: " + e.getMessage());
+        }
     }
 }
