@@ -1,9 +1,9 @@
 package ar.edu.utn.dds.k3003.model;
 
 import ar.edu.utn.dds.k3003.facades.dtos.EstadoSolicitudBorradoEnum;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 
 @Data
 @Entity
@@ -22,9 +22,14 @@ public class Solicitud {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String descripcion;
+
+    @Enumerated(EnumType.STRING)
     private EstadoSolicitudBorradoEnum estado;
+
+    //aca fk
     private String hechoId;
 
     public String getId() {
