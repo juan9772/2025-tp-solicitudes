@@ -58,7 +58,7 @@ public class SolicitudController {
         return ResponseEntity.ok(fachadaSolicitudes.modificar(solicitudId, estado, descripcion));
     }
     // GET /solicitudes?hecho={hechoId}
-    @GetMapping("/hecho/{id}/estaActivo")
+    @GetMapping("/estadoHecho/{id}")
     public ResponseEntity<Boolean> estaActivo(@PathVariable String id) {
         return ResponseEntity.ok(fachadaSolicitudes.estaActivo(id));
     }
