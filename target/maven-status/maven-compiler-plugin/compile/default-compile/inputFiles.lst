@@ -1,21 +1,23 @@
-C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\repository\InMemorySolicitudRepo.java
-C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\app\Fuente.java
-C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\repository\InMemoryColeccionRepo.java
-C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\clients\FuenteRetrofitClient.java
-C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\model\Solicitud.java
-C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\model\Hecho.java
-C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\controller\SolicitudController.java
-C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\config\JacksonConfig.java
-C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\app\Fachada.java
-C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\MetricsConfig.java
-C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\repository\JpaSolicitudRepository.java
-C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\Application.java
-C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\config\GlobalExceptionHandler.java
-C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\controller\RootController.java
-C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\config\AntiSpamConfig.java
-C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\config\FachadaFuenteConfig.java
-C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\repository\ColeccionRepository.java
-C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\app\AntiSpamService.java
-C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\repository\SolicitudRepository.java
-C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\clients\FuenteProxy.java
-C:\Users\Alberto Kremer\Desktop\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\model\Coleccion.java
+C:\Users\luakr\Desktop\DDS\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\model\Solicitud.java
+C:\Users\luakr\Desktop\DDS\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\repository\InMemorySolicitudRepo.java
+C:\Users\luakr\Desktop\DDS\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\config\JacksonConfig.java
+C:\Users\luakr\Desktop\DDS\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\MetricsConfig.java
+C:\Users\luakr\Desktop\DDS\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\clients\FuenteRetrofitClient.java
+C:\Users\luakr\Desktop\DDS\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\config\GlobalExceptionHandler.java
+C:\Users\luakr\Desktop\DDS\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\repository\JpaSolicitudRepository.java
+C:\Users\luakr\Desktop\DDS\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\repository\SolicitudRepository.java
+C:\Users\luakr\Desktop\DDS\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\app\AntiSpamService.java
+C:\Users\luakr\Desktop\DDS\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\app\Fachada.java
+C:\Users\luakr\Desktop\DDS\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\repository\InMemoryColeccionRepo.java
+C:\Users\luakr\Desktop\DDS\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\controller\RootController.java
+C:\Users\luakr\Desktop\DDS\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\DDMetricsUtils.java
+C:\Users\luakr\Desktop\DDS\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\app\Fuente.java
+C:\Users\luakr\Desktop\DDS\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\controller\MetricsController.java
+C:\Users\luakr\Desktop\DDS\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\repository\ColeccionRepository.java
+C:\Users\luakr\Desktop\DDS\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\config\AntiSpamConfig.java
+C:\Users\luakr\Desktop\DDS\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\model\Coleccion.java
+C:\Users\luakr\Desktop\DDS\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\Application.java
+C:\Users\luakr\Desktop\DDS\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\model\Hecho.java
+C:\Users\luakr\Desktop\DDS\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\clients\FuenteProxy.java
+C:\Users\luakr\Desktop\DDS\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\controller\SolicitudController.java
+C:\Users\luakr\Desktop\DDS\2025-tp-solicitudes\src\main\java\ar\edu\utn\dds\k3003\config\FachadaFuenteConfig.java
