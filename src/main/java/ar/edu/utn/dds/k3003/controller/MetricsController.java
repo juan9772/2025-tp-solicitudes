@@ -1,6 +1,6 @@
 package ar.edu.utn.dds.k3003.controller;
 
-import ar.edu.utn.dds.k3003.repository.JpaSolicitudRepository;
+import ar.edu.utn.dds.k3003.facades.dtos.SolicitudDTO;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.MeterRegistry;
@@ -21,19 +21,20 @@ public class MetricsController {
     private static final Logger log = LoggerFactory.getLogger(MetricsController.class);
     private final AtomicInteger debugGauge = new AtomicInteger(0);
     private final MeterRegistry meterRegistry;
-    private final JpaSolicitudRepository solicitudRepository;
 
     @Autowired
-    public MetricsController(MeterRegistry meterRegistry, JpaSolicitudRepository solicitudRepository) {
+    public MetricsController(MeterRegistry meterRegistry) {
         this.meterRegistry = meterRegistry;
-        this.solicitudRepository = solicitudRepository;
         meterRegistry.gauge("solicitudes.debug.gauge", debugGauge);
         log.info("✅ MetricsController inicializado para métricas de solicitudes");
     }
 
     @GetMapping("/solicitudes/total")
     public ResponseEntity<Map<String, Object>> getTotalSolicitudes() {
-        int total = solicitudRepository.findAll().size();
+        org.springframework.web.client.RestTemplate restTemplate = new org.springframework.web.client.RestTemplate();
+        String url = "https://grupo12-solicitudes.onrender.com/api/solicitudes"; // Ajusta la URL si es necesario
+        SolicitudDTO[] solicitudes = restTemplate.getForObject(url, SolicitudDTO[].class);
+        int total = solicitudes != null ? solicitudes.length : 0;
         return ResponseEntity.ok(Map.of("totalSolicitudes", total));
     }
 
