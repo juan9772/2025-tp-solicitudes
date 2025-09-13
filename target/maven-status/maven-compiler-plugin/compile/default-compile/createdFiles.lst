@@ -7,6 +7,7 @@ ar\edu\utn\dds\k3003\controller\SolicitudController.class
 ar\edu\utn\dds\k3003\model\Coleccion.class
 ar\edu\utn\dds\k3003\Application.class
 ar\edu\utn\dds\k3003\model\Hecho.class
+ar\edu\utn\dds\MetricsConfig.class
 ar\edu\utn\dds\k3003\app\AntiSpamService.class
 ar\edu\utn\dds\k3003\clients\FuenteProxy.class
 ar\edu\utn\dds\k3003\config\AntiSpamConfig.class
@@ -18,3 +19,4 @@ ar\edu\utn\dds\k3003\config\JacksonConfig.class
 ar\edu\utn\dds\k3003\repository\InMemorySolicitudRepo.class
 ar\edu\utn\dds\k3003\repository\InMemoryColeccionRepo.class
 ar\edu\utn\dds\k3003\repository\SolicitudRepository.class
+ar\edu\utn\dds\MetricsConfig$1.class
