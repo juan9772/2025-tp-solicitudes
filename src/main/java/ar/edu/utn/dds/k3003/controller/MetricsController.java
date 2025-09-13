@@ -20,22 +20,33 @@ public class MetricsController {
 
     private static final Logger log = LoggerFactory.getLogger(MetricsController.class);
     private final AtomicInteger debugGauge = new AtomicInteger(0);
+    private final AtomicInteger totalSolicitudesGauge = new AtomicInteger(0);
     private final MeterRegistry meterRegistry;
 
     @Autowired
     public MetricsController(MeterRegistry meterRegistry) {
         this.meterRegistry = meterRegistry;
         meterRegistry.gauge("solicitudes.debug.gauge", debugGauge);
+        meterRegistry.gauge("solicitudes.total.count", totalSolicitudesGauge);
         log.info("✅ MetricsController inicializado para métricas de solicitudes");
     }
 
-    @GetMapping("/solicitudes/total")
-    public ResponseEntity<Map<String, Object>> getTotalSolicitudes() {
+    // Actualiza el gauge con el total de solicitudes desde el endpoint externo
+    private void actualizarTotalSolicitudes() {
         org.springframework.web.client.RestTemplate restTemplate = new org.springframework.web.client.RestTemplate();
-        String url = "https://grupo12-solicitudes.onrender.com/api/solicitudes"; // Ajusta la URL si es necesario
+        String url = "https://grupo12-solicitudes.onrender.com/api/solicitudes";
         SolicitudDTO[] solicitudes = restTemplate.getForObject(url, SolicitudDTO[].class);
         int total = solicitudes != null ? solicitudes.length : 0;
-        return ResponseEntity.ok(Map.of("totalSolicitudes", total));
+        totalSolicitudesGauge.set(total);
+        log.info("🔢 Total de solicitudes actualizado a: {}", total);
+    }
+
+    @GetMapping("/solicitudes/total")
+    public ResponseEntity<Integer> getTotalSolicitudes() {
+        actualizarTotalSolicitudes();
+        Gauge gauge = meterRegistry.find("solicitudes.total.count").gauge();
+        int value = gauge != null ? (int) gauge.value() : 0;
+        return ResponseEntity.ok(value);
     }
 
     @GetMapping("/actividad")
