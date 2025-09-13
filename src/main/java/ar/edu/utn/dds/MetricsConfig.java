@@ -29,7 +29,8 @@ public class MetricsConfig {
             public String get(String key) { return null; }
         };
         composite.add(new DatadogMeterRegistry(datadogConfig, Clock.SYSTEM));
-        return composite
+
+        return composite;
 
         // StatsD registry for local agent (backup)
         //StatsdConfig statsdConfig = new StatsdConfig();
