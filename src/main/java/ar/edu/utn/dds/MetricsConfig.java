@@ -28,8 +28,8 @@ public class MetricsConfig {
             @Override
             public String get(String key) { return null; }
         };
-
-        return composite.add(new DatadogMeterRegistry(datadogConfig, Clock.SYSTEM));
+        composite.add(new DatadogMeterRegistry(datadogConfig, Clock.SYSTEM));
+        return composite
 
         // StatsD registry for local agent (backup)
         //StatsdConfig statsdConfig = new StatsdConfig();
