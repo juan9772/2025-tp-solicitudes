@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 */
 
 @RestController
-@RequestMapping("/api/solicitudes")
+@RequestMapping("/api")
 public class SolicitudController {
 
     private final FachadaSolicitudes fachadaSolicitudes;
@@ -34,35 +34,35 @@ public class SolicitudController {
     }
 
     // GET /solicitudes?hecho={hechoId}
-    @GetMapping
-    public ResponseEntity<List<SolicitudDTO>> obtenerSolicitudPorHecho(@RequestParam String hecho) {
-        return ResponseEntity.ok(fachadaSolicitudes.buscarSolicitudXHecho(hecho));
+    @GetMapping("/solicitudes/{hechoId}")
+    public ResponseEntity<List<SolicitudDTO>> obtenerSolicitudPorHecho(@PathVariable String hechoId) {
+        return ResponseEntity.ok(fachadaSolicitudes.buscarSolicitudXHecho(hechoId));
     }
 
     // POST /solicitudes
-    @PostMapping
+    @PostMapping("/solicitudes")
     public ResponseEntity<SolicitudDTO> crearSolicitud(@RequestBody SolicitudDTO solicitud) {
         return ResponseEntity.ok(fachadaSolicitudes.agregar(solicitud));
     }
 
     // GET /solicitudes/{id}
-    @GetMapping("/{id}")
+    @GetMapping("/solicitudes/{id}")
     public ResponseEntity<SolicitudDTO> obtenerSolicitud(@PathVariable String id) {
         return ResponseEntity.ok(fachadaSolicitudes.buscarSolicitudXId(id));
     }
 
-    @PatchMapping
+    @PatchMapping("/solicitudes")
     public ResponseEntity<SolicitudDTO> actualizarSolicitud(@RequestBody String solicitudId,
                                                             EstadoSolicitudBorradoEnum estado,
                                                             String descripcion) {
         return ResponseEntity.ok(fachadaSolicitudes.modificar(solicitudId, estado, descripcion));
     }
     // GET /solicitudes?hecho={hechoId}
-    @GetMapping("/hecho/{id}/estaActivo")
+    @GetMapping("/solicitudes/hechos/{id}/estaActivo")
     public ResponseEntity<Boolean> estaActivo(@PathVariable String id) {
         return ResponseEntity.ok(fachadaSolicitudes.estaActivo(id));
     }
-    @PostMapping("/setFuente")
+    @PostMapping("/solicitudes/fuentes")
     public ResponseEntity<String> setFuente(@RequestBody FuenteDTO fuenteDTO) {
         try {
             // Create a new FuenteProxy instance using the endpoint from the DTO
