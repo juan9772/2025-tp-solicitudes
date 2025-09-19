@@ -20,6 +20,7 @@ import java.util.List;
 */
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api")
 public class SolicitudController {
 

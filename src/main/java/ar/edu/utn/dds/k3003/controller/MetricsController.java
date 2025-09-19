@@ -15,6 +15,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/admin/metrics")
 public class MetricsController {
 
