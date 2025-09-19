@@ -1,6 +1,6 @@
 package ar.edu.utn.dds.k3003.controller;
 
-import ar.edu.utn.dds.k3003.clients.FuenteProxy;
+import ar.edu.utn.dds.k3003.client.FuenteProxy;
 import ar.edu.utn.dds.k3003.facades.FachadaSolicitudes;
 import ar.edu.utn.dds.k3003.facades.dtos.EstadoSolicitudBorradoEnum;
 import ar.edu.utn.dds.k3003.facades.dtos.FuenteDTO;
@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 /*
     GET /solicitudes?hecho={hechoId}

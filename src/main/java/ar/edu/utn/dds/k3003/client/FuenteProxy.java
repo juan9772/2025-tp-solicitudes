@@ -1,4 +1,4 @@
-package ar.edu.utn.dds.k3003.clients;
+package ar.edu.utn.dds.k3003.client;
 
 import ar.edu.utn.dds.k3003.facades.FachadaFuente;
 import ar.edu.utn.dds.k3003.facades.FachadaProcesadorPdI;
@@ -8,7 +8,6 @@ import ar.edu.utn.dds.k3003.facades.dtos.PdIDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.javalin.http.HttpStatus;
 import lombok.SneakyThrows;
-import org.springframework.stereotype.Service;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
@@ -16,7 +15,6 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 import java.io.IOException;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 
 public class FuenteProxy implements FachadaFuente {
