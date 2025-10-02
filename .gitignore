@@ -6,3 +6,6 @@ target/classes/ar/edu/utn/dds/k3003/clients/FuenteProxy.class
 target/classes/ar/edu/utn/dds/k3003/clients/FuenteRetrofitClient.class
 target/classes/ar/edu/utn/dds/k3003/controller/SolicitudController.class
 .idea/compiler.xml
+/.idea
+/target
+*.env
