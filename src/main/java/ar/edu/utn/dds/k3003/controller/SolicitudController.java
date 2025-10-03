@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /*
-    GET /solicitudes?hecho={hechoId}
+    GET /solicitudes?hechoId={hechoId}
     POST /solicitudes
     GET /solicitudes/{id}
     PATCH /solicitudes
@@ -33,9 +33,9 @@ public class SolicitudController {
         this.objectMapper=objectMapper;
     }
 
-    // GET /solicitudes?hecho={hechoId}
-    @GetMapping("/solicitudes/{hechoId}")
-    public ResponseEntity<List<SolicitudDTO>> obtenerSolicitudPorHecho(@PathVariable String hechoId) {
+    // GET /solicitudes?hechoId={hechoId}
+    @GetMapping("/solicitudes")
+    public ResponseEntity<List<SolicitudDTO>> obtenerSolicitudPorHecho(@RequestParam String hechoId) {
         return ResponseEntity.ok(fachadaSolicitudes.buscarSolicitudXHecho(hechoId));
     }
 

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class Fachada implements FachadaSolicitudes {
@@ -68,17 +69,9 @@ public class Fachada implements FachadaSolicitudes {
     @Override
     public List<SolicitudDTO> buscarSolicitudXHecho(String hechoId) {
         List<Solicitud> solicitudes = this.solicitudRepository.findByHechoId(hechoId);
-        if (solicitudes.isEmpty()){
-            throw new IllegalArgumentException("No existen solicitudes con el hechoId: " + hechoId);
-        }
-        List<SolicitudDTO> solicitudesDTO = new ArrayList<>();
-        solicitudes.forEach(x ->
-            {
-                SolicitudDTO solicitudTemp = convertirDesdeDominio(x);
-                solicitudesDTO.add(solicitudTemp);
-            }
-        );
-        return solicitudesDTO;
+        return solicitudes.stream()
+                .map(this::convertirDesdeDominio)
+                .collect(Collectors.toList());
     }
 
     @Override
