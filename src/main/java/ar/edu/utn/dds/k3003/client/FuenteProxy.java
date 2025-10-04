@@ -12,6 +12,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import io.javalin.http.HttpStatus;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import lombok.SneakyThrows;
 import org.slf4j.Logger;
@@ -201,6 +202,34 @@ public class FuenteProxy implements FachadaFuente {
           "FuenteProxy: IOException solicitando hecho a endpoint='{}' para hechoId='{}'",
           this.endpoint,
           hechoId,
+          e);
+      throw new RuntimeException("Error de I/O al conectarse con el componente de fuentes.", e);
+    }
+  }
+
+  public void modificarHecho(String id, Map<String, String> payload) {
+    try {
+      logger.debug(
+          "FuenteProxy: modificando hecho con id={} en endpoint='{}'", id, this.endpoint);
+      Response<Void> response = service.modificar(id, payload).execute();
+      logger.debug(
+          "FuenteProxy: response code={} mensaje='{}'", response.code(), response.message());
+
+      if (!response.isSuccessful()) {
+        logger.error(
+            "FuenteProxy: error al modificar hecho con id={} en endpoint='{}' mensaje='{}'",
+            id,
+            this.endpoint,
+            response.message());
+        throw new RuntimeException("Error al modificar el hecho: " + response.message());
+      }
+       logger.info("FuenteProxy: Hecho con id={} modificado exitosamente.", id);
+
+    } catch (IOException e) {
+      logger.error(
+          "FuenteProxy: IOException modificando hecho en endpoint='{}' para id='{}'",
+          this.endpoint,
+          id,
           e);
       throw new RuntimeException("Error de I/O al conectarse con el componente de fuentes.", e);
     }

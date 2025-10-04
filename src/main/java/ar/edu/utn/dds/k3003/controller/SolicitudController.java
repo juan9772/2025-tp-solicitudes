@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+record ActualizarSolicitudPayload(EstadoSolicitudBorradoEnum estado, String descripcion) {}
+
 /*
     GET /solicitudes?hechoId={hechoId}
     POST /solicitudes
     GET /solicitudes/{id}
-    PATCH /solicitudes
+    PATCH /solicitudes/{id}
 */
 
 @RestController
@@ -51,11 +53,10 @@ public class SolicitudController {
         return ResponseEntity.ok(fachadaSolicitudes.buscarSolicitudXId(id));
     }
 
-    @PatchMapping("/solicitudes")
-    public ResponseEntity<SolicitudDTO> actualizarSolicitud(@RequestBody String solicitudId,
-                                                            EstadoSolicitudBorradoEnum estado,
-                                                            String descripcion) {
-        return ResponseEntity.ok(fachadaSolicitudes.modificar(solicitudId, estado, descripcion));
+    @PatchMapping("/solicitudes/{solicitudId}")
+    public ResponseEntity<SolicitudDTO> actualizarSolicitud(@PathVariable String solicitudId,
+                                                            @RequestBody ActualizarSolicitudPayload payload) {
+        return ResponseEntity.ok(fachadaSolicitudes.modificar(solicitudId, payload.estado(), payload.descripcion()));
     }
     // GET /solicitudes?hecho={hechoId}
     @GetMapping("/solicitudes/hechos/{id}/estaActivo")

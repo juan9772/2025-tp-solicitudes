@@ -1,4 +1,6 @@
 package ar.edu.utn.dds.k3003.app;
+
+import ar.edu.utn.dds.k3003.client.FuenteProxy;
 import ar.edu.utn.dds.k3003.facades.FachadaFuente;
 import ar.edu.utn.dds.k3003.facades.FachadaSolicitudes;
 import ar.edu.utn.dds.k3003.facades.dtos.EstadoSolicitudBorradoEnum;
@@ -6,6 +8,8 @@ import ar.edu.utn.dds.k3003.facades.dtos.HechoDTO;
 import ar.edu.utn.dds.k3003.facades.dtos.SolicitudDTO;
 import ar.edu.utn.dds.k3003.model.Solicitud;
 import ar.edu.utn.dds.k3003.repository.JpaSolicitudRepository;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,12 +60,23 @@ public class Fachada implements FachadaSolicitudes {
     @Transactional
     @Override
     public SolicitudDTO modificar(String solicitudId, EstadoSolicitudBorradoEnum estado, String descripcion) throws NoSuchElementException {
-        SolicitudDTO solicitudTemp = buscarSolicitudXId(solicitudId);
-        Solicitud solicitud = new Solicitud(solicitudTemp.id(), solicitudTemp.descripcion(), solicitudTemp.estado(), solicitudTemp.hechoId());
+        Optional<Solicitud> solicitudOpt = this.solicitudRepository.findById(solicitudId);
+        if (solicitudOpt.isEmpty()){
+            throw new NoSuchElementException("La solicitud " + solicitudId + " no existe");
+        }
+        Solicitud solicitud = solicitudOpt.get();
         solicitud.setEstado(estado);
         solicitud.setDescripcion(descripcion);
-        solicitudRepository.delete(solicitud.getId());
-        solicitudRepository.save(solicitud);
+        solicitud = this.solicitudRepository.save(solicitud);
+
+        if (estado == EstadoSolicitudBorradoEnum.ACEPTADA) {
+            if (fuente instanceof FuenteProxy) {
+                Map<String, String> payload = new HashMap<>();
+                payload.put("estado", "BORRADO");
+                ((FuenteProxy) fuente).modificarHecho(solicitud.getHechoId(), payload);
+            }
+        }
+    
         return convertirDesdeDominio(solicitud);
     }
 

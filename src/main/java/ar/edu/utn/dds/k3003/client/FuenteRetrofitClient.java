@@ -3,8 +3,12 @@ package ar.edu.utn.dds.k3003.client;
 import ar.edu.utn.dds.k3003.facades.dtos.ColeccionDTO;
 import ar.edu.utn.dds.k3003.facades.dtos.HechoDTO;
 import java.util.List;
+import java.util.Map;
+
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.PATCH;
 import retrofit2.http.Path;
 
 public interface FuenteRetrofitClient {
@@ -16,4 +20,7 @@ public interface FuenteRetrofitClient {
 
   @GET("api/colecciones/{coleccionId}/hechos")
   Call<List<HechoDTO>> getHechosPorColleccion(@Path("coleccionId") String coleccionId);
+
+  @PATCH("api/hechos/{id}")
+    Call<Void> modificar(@Path("id") String id, @Body Map<String, String> estadoData);
 }
