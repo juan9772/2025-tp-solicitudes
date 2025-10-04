@@ -6,6 +6,7 @@ import ar.edu.utn.dds.k3003.facades.dtos.HechoDTO;
 import ar.edu.utn.dds.k3003.facades.dtos.SolicitudDTO;
 import ar.edu.utn.dds.k3003.model.Solicitud;
 import ar.edu.utn.dds.k3003.repository.JpaSolicitudRepository;
+import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,15 +43,13 @@ public class Fachada implements FachadaSolicitudes {
     @Override
     @Transactional
     public SolicitudDTO agregar(SolicitudDTO solicitudDTO) {
-        if (this.solicitudRepository.findById(solicitudDTO.id()).isPresent()){
-            throw  new IllegalArgumentException(solicitudDTO.id() + " ya existe");
-        }
         HechoDTO hecho = fuente.buscarHechoXId(solicitudDTO.hechoId());
         if (antiSpam.revisarSpam(solicitudDTO.descripcion())){
             throw new IllegalArgumentException("No cumple requisito de AntiSpam");
         }
-        Solicitud solicitud = convertirDesdeDTO(solicitudDTO);
-        this.solicitudRepository.save(solicitud);
+        Solicitud solicitud = new Solicitud(solicitudDTO.descripcion(), solicitudDTO.estado(), solicitudDTO.hechoId());
+        solicitud.setId(UUID.randomUUID().toString());
+        solicitud = this.solicitudRepository.save(solicitud);
         return convertirDesdeDominio(solicitud);
     }
 
@@ -77,10 +76,9 @@ public class Fachada implements FachadaSolicitudes {
     @Override
     public SolicitudDTO buscarSolicitudXId(String solicitudId) {
         Optional<Solicitud> solicitudEmpty = this.solicitudRepository.findById(solicitudId);
-        // El test "getSolicitud_DeberiaRetornarListaVacia" tira 500 si existe se tira esta excepcion
-        //if (solicitudEmpty.isEmpty()){
-        //    throw new IllegalArgumentException("La solicitud " + solicitudId +" no existe");
-        //}
+        if (solicitudEmpty.isEmpty()){
+            throw new NoSuchElementException("La solicitud " + solicitudId +" no existe");
+        }
         Solicitud solicitud = solicitudEmpty.get();
         return convertirDesdeDominio(solicitud);
     }

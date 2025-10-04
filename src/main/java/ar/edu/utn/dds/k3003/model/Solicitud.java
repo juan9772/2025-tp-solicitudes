@@ -21,6 +21,12 @@ public class Solicitud {
         this.hechoId = hechoId;
     }
 
+    public Solicitud(String descripcion, EstadoSolicitudBorradoEnum estado, String hechoId) {
+        this.descripcion = descripcion;
+        this.estado = estado;
+        this.hechoId = hechoId;
+    }
+
     @Id
     private String id;
     private String descripcion;
