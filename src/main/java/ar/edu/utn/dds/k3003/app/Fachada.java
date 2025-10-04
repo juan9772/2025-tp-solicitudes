@@ -101,6 +101,9 @@ public class Fachada implements FachadaSolicitudes {
     @Override
     public boolean estaActivo(String unHechoId) {
         List<SolicitudDTO> solicitudesDTO = buscarSolicitudXHecho(unHechoId);
+        if (solicitudesDTO.isEmpty()) {
+            return true;
+        }
         return solicitudesDTO.stream().anyMatch(s -> s.estado() != EstadoSolicitudBorradoEnum.ACEPTADA && s.estado() != EstadoSolicitudBorradoEnum.RECHAZADA);
     }
 
