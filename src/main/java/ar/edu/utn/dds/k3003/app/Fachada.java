@@ -86,16 +86,7 @@ public class Fachada implements FachadaSolicitudes {
     @Override
     public boolean estaActivo(String unHechoId) {
         List<SolicitudDTO> solicitudesDTO = buscarSolicitudXHecho(unHechoId);
-        List<Solicitud> solicitudes = new ArrayList<>();
-        solicitudesDTO.forEach(x ->
-                {
-                    Solicitud solicitudTemp = convertirDesdeDTO(x);
-                    solicitudes.add(solicitudTemp);
-                }
-        );
-        return solicitudes.stream().anyMatch(x -> x.getEstado() != EstadoSolicitudBorradoEnum.ACEPTADA)
-                ||
-                solicitudes.stream().anyMatch(x -> x.getEstado() != EstadoSolicitudBorradoEnum.RECHAZADA);
+        return solicitudesDTO.stream().anyMatch(s -> s.estado() != EstadoSolicitudBorradoEnum.ACEPTADA && s.estado() != EstadoSolicitudBorradoEnum.RECHAZADA);
     }
 
     @Override
