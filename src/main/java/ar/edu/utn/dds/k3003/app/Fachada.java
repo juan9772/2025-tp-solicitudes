@@ -8,6 +8,7 @@ import ar.edu.utn.dds.k3003.facades.dtos.HechoDTO;
 import ar.edu.utn.dds.k3003.facades.dtos.SolicitudDTO;
 import ar.edu.utn.dds.k3003.model.Solicitud;
 import ar.edu.utn.dds.k3003.repository.JpaSolicitudRepository;
+import ar.edu.utn.dds.k3003.service.EventPublisher;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -27,10 +28,16 @@ public class Fachada implements FachadaSolicitudes {
     private JpaSolicitudRepository solicitudRepository;
     private FachadaFuente fuente;
     private AntiSpamService antiSpam;
+    private EventPublisher eventPublisher;
 
     public Fachada(JpaSolicitudRepository repo) {
         this.solicitudRepository = repo;
         this.antiSpam = texto -> false;
+    }
+    
+    @Autowired
+    public void setEventPublisher(EventPublisher eventPublisher) {
+        this.eventPublisher = eventPublisher;
     }
 
 
@@ -70,10 +77,16 @@ public class Fachada implements FachadaSolicitudes {
         solicitud = this.solicitudRepository.save(solicitud);
 
         if (estado == EstadoSolicitudBorradoEnum.ACEPTADA) {
+            // Notificar al módulo fuente para actualizar el estado
             if (fuente instanceof FuenteProxy) {
                 Map<String, String> payload = new HashMap<>();
                 payload.put("estado", "BORRADO");
                 ((FuenteProxy) fuente).modificarHecho(solicitud.getHechoId(), payload);
+            }
+            
+            // NUEVO: Emitir evento para que el agregador marque como borrado en el índice
+            if (eventPublisher != null) {
+                eventPublisher.emitirHechoBorrado(solicitud.getHechoId(), solicitudId);
             }
         }
     
